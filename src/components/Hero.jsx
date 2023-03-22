@@ -1,8 +1,10 @@
 import React from "react";
+import plane from "../assets/plane.svg";
+import { motion } from "framer-motion";
 
 const Hero = ({ showSection }) => {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center relative">
       <div className="flex flex-col gap-y-10 w-[700px]">
         <h2 className="text-6xl font-bold">
           CV Creation has never been so{" "}
