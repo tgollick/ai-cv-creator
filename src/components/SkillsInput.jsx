@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const SkillsInput = ({ innerRef, showSection }) => {
   const [skills, setSkills] = useState([]);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const skillRef = useRef();
 
@@ -26,6 +27,11 @@ const SkillsInput = ({ innerRef, showSection }) => {
   const deleteSkill = (id) => {
     const tempSkills = [...skills];
     setSkills(tempSkills.filter((skill) => skill.id !== id));
+  };
+
+  const nextSection = () => {
+    showSection();
+    setButtonDisabled(true);
   };
 
   return (
@@ -60,7 +66,13 @@ const SkillsInput = ({ innerRef, showSection }) => {
           </button>
         </div>
 
-        <button onClick={showSection} className="bg-blue-500 rounded-full">
+        <button
+          onClick={nextSection}
+          className={`${
+            buttonDisabled ? `bg-gray-500` : `bg-blue-500`
+          } rounded-full transition-colors duration-500`}
+          disabled={buttonDisabled}
+        >
           <img src={downArrow} alt="Down Arrow" className="w-10" />
         </button>
       </div>

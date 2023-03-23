@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import CV from "./components/CV.jsx";
 import EducationInput from "./components/EducationInput.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
@@ -12,10 +13,11 @@ const App = () => {
 
   const [userdetails, setUserDetails] = useState("");
 
-  const handleUserDetails = (name, img) => {
+  const handleUserDetails = (name, img, email) => {
     setUserDetails({
       name: name,
       img: img,
+      email: email,
     });
   };
 
@@ -25,8 +27,9 @@ const App = () => {
   const ref4 = useRef();
   const ref5 = useRef();
   const ref6 = useRef();
+  const ref7 = useRef();
 
-  const refs = [ref1, ref2, ref3, ref4, ref5, ref6];
+  const refs = [ref1, ref2, ref3, ref4, ref5, ref6, ref7];
 
   const showSection = () => {
     const tempSection = sectionvisible;
@@ -39,7 +42,7 @@ const App = () => {
         block: "end",
         inline: "nearest",
       });
-    }, 100);
+    }, 500);
   };
 
   const components = [
@@ -86,6 +89,10 @@ const App = () => {
     {
       component: <SocialMedias showSection={showSection} innerRef={ref6} />,
       index: 6,
+    },
+    {
+      component: <CV innerRef={ref7} userDetails={userdetails} />,
+      index: 7,
     },
   ];
 

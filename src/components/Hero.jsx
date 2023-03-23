@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 
@@ -24,7 +23,8 @@ const Hero = ({ showSection, handleUserDetails }) => {
             console.log(decodedData);
             const fullName = decodedData.name;
             const image = decodedData.picture;
-            handleUserDetails(fullName, image);
+            const email = decodedData.email;
+            handleUserDetails(fullName, image, email);
             showSection();
           }}
           onError={() => {

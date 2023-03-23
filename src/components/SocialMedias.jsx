@@ -12,6 +12,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const SocialMedias = ({ showSection, innerRef }) => {
   const [socials, setSocials] = useState([]);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const socialMedias = [
     {
@@ -67,6 +68,11 @@ const SocialMedias = ({ showSection, innerRef }) => {
     setSocials(tempSocials.filter((social) => social.id !== id));
   };
 
+  const nextSection = () => {
+    showSection();
+    setButtonDisabled(true);
+  };
+
   return (
     <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
@@ -107,7 +113,13 @@ const SocialMedias = ({ showSection, innerRef }) => {
           </button>
         </div>
 
-        <button onClick={showSection} className="bg-blue-500 rounded-full">
+        <button
+          onClick={nextSection}
+          className={`${
+            buttonDisabled ? `bg-gray-500` : `bg-blue-500`
+          } rounded-full transition-colors duration-500`}
+          disabled={buttonDisabled}
+        >
           <img src={downArrow} alt="Down Arrow" className="w-10" />
         </button>
       </div>

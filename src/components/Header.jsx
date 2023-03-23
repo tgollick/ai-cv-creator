@@ -17,14 +17,14 @@ const Header = ({ userDetails }) => {
       </div>
 
       <div
-        className={`flex justify-center gap-x-3 items-center text-xl ${
+        className={`flex justify-center gap-x-3 items-center ${
           userDetails === "" ? "hidden" : ""
         }`}
       >
         <img
           src={userDetails.img}
           alt="User"
-          className="w-12 h-12 object-fit rounded-full border-2 border-blue-500"
+          className="w-10 h-10 object-fit rounded-full border-2 border-blue-500"
         />
         <p>
           Currently logged in: <strong>{userDetails.name}</strong>

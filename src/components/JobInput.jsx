@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Job from "./Job";
 import downArrow from "../assets/down.svg";
 
-const Step = ({
-  sectionTitle,
-  stepNumber,
-  innerRef,
-  showSection,
-  userDetails,
-}) => {
+const Step = ({ sectionTitle, stepNumber, innerRef, showSection }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const nextSection = () => {
+    showSection();
+    setButtonDisabled(true);
+  };
+
   return (
     <div
       className={`h-screen flex justify-center items-center relative`}
@@ -25,7 +26,13 @@ const Step = ({
           <Job />
         </div>
 
-        <button className="bg-blue-500 rounded-full" onClick={showSection}>
+        <button
+          className={`${
+            buttonDisabled ? `bg-gray-500` : `bg-blue-500`
+          } rounded-full transition-colors duration-500`}
+          onClick={nextSection}
+          disabled={buttonDisabled}
+        >
           <img src={downArrow} alt="Down Arrow" className="w-10" />
         </button>
       </div>
