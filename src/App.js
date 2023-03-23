@@ -10,6 +10,15 @@ import SocialMedias from "./components/SocialMedias.jsx";
 const App = () => {
   const [sectionvisible, setSectionVisible] = useState(0);
 
+  const [userdetails, setUserDetails] = useState("");
+
+  const handleUserDetails = (name, img) => {
+    setUserDetails({
+      name: name,
+      img: img,
+    });
+  };
+
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
@@ -35,7 +44,9 @@ const App = () => {
 
   const components = [
     {
-      component: <Hero showSection={showSection} />,
+      component: (
+        <Hero showSection={showSection} handleUserDetails={handleUserDetails} />
+      ),
       index: 0,
     },
     {
@@ -81,7 +92,7 @@ const App = () => {
   return (
     <div>
       {/* Header */}
-      <Header />
+      <Header userDetails={userdetails} />
 
       <div>
         {components.map((item, index) => {
@@ -90,9 +101,6 @@ const App = () => {
           ) : null;
         })}
       </div>
-
-      {/* Hobbies */}
-      <section id="hobbies"></section>
 
       {/* Footer */}
     </div>

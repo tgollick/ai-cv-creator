@@ -1,8 +1,9 @@
 import React from "react";
-import plane from "../assets/plane.svg";
 import { motion } from "framer-motion";
+import { GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
-const Hero = ({ showSection }) => {
+const Hero = ({ showSection, handleUserDetails }) => {
   return (
     <div className="h-screen flex justify-center items-center relative">
       <div className="flex flex-col gap-y-10 w-[700px]">
@@ -17,13 +18,19 @@ const Hero = ({ showSection }) => {
           process, no sign up required. Get started{" "}
           <span className="font-bold uppercase">today!</span>
         </p>
-
-        <button
-          onClick={showSection}
-          className="py-3 px-5 bg-blue-500 text-white rounded-lg w-fit"
-        >
-          Lets go
-        </button>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            var decodedData = jwt_decode(credentialResponse.credential);
+            console.log(decodedData);
+            const fullName = decodedData.name;
+            const image = decodedData.picture;
+            handleUserDetails(fullName, image);
+            showSection();
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
       </div>
     </div>
   );

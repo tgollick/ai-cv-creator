@@ -2,6 +2,11 @@ import React, { useRef, useState } from "react";
 import downArrow from "../assets/down.svg";
 import plusIcon from "../assets/plus.svg";
 import Social from "./Social";
+import twitter from "../assets/twitter.svg";
+import youtube from "../assets/youtube.svg";
+import github from "../assets/github.svg";
+import instagram from "../assets/instagram.svg";
+import linkedin from "../assets/linkedin.svg";
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -11,37 +16,43 @@ const SocialMedias = ({ showSection, innerRef }) => {
   const socialMedias = [
     {
       name: "Twitter",
-      img: "",
+      img: twitter,
       id: "twitter",
     },
     {
       name: "Youtube",
-      img: "",
+      img: youtube,
       id: "youtube",
     },
     {
       name: "GitHub",
-      img: "",
+      img: github,
       id: "github",
     },
     {
       name: "LinkedIn",
-      img: "",
+      img: linkedin,
       id: "linkedin",
     },
     {
       name: "Instagram",
-      img: "",
+      img: instagram,
       id: "instagram",
     },
   ];
 
   const socialRef = useRef();
+  const socialTypeRef = useRef();
 
   const handleAddSocial = () => {
+    const matchedSocial = socialMedias.find(
+      (social) => social.id === socialTypeRef.current.value
+    );
+
     const social = {
       id: uuidv4(),
-      name: socialRef.current.value,
+      username: socialRef.current.value,
+      socialType: matchedSocial,
     };
 
     socialRef.current.value = "";
@@ -69,7 +80,7 @@ const SocialMedias = ({ showSection, innerRef }) => {
 
         <div className="flex flex-col gap-y-3">
           {socials.map((sm) => (
-            <Social key={sm.id} skill={sm} deleteSkill={deleteSocial} />
+            <Social key={sm.id} social={sm} deleteSocial={deleteSocial} />
           ))}
         </div>
 
@@ -81,9 +92,8 @@ const SocialMedias = ({ showSection, innerRef }) => {
             ref={socialRef}
           />
           <select
-            name="cars"
-            id="cars"
             className="w-[125px] px-2 py-3 bg-slate-100 rounded-lg"
+            ref={socialTypeRef}
           >
             {socialMedias.map((social) => (
               <option value={social.id}>{social.name}</option>
