@@ -2,8 +2,8 @@ import React from "react";
 
 const CVImage = ({ userImage }) => {
   return (
-    <div>
-      <img src={userImage} alt="User" />
+    <div className="p-8">
+      <img src={userImage} alt="User" className="w-full rounded-full" />
     </div>
   );
 };

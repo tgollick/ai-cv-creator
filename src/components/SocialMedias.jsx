@@ -10,7 +10,7 @@ import linkedin from "../assets/linkedin.svg";
 
 const { v4: uuidv4 } = require("uuid");
 
-const SocialMedias = ({ showSection, innerRef }) => {
+const SocialMedias = ({ innerRef, showSection }) => {
   const [socials, setSocials] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
