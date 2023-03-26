@@ -7,7 +7,7 @@ const Social = ({ social, deleteSocial }) => {
   };
 
   return (
-    <div className="flex justify-center gap-x-3">
+    <div className="flex justify-center gap-x-3 text-black">
       <p className="text-xl w-[400px]">{social.username}</p>
       <img src={social.socialType.img} alt="Social logo" className="w-10" />
       <button onClick={handleDelete}>

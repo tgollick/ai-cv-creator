@@ -15,7 +15,7 @@ async function personalCompletion(job1, job2, education) {
       },
       {
         role: "user",
-        content: `I have worked two jobs. I previous worked as ${job2.jobName} for ${job2.companyName} and I now work as a ${job1.jobName} for ${job1.companyName}. Before I work these jobs I studied ${education.degree} at ${education.schooName}, write me a personal summary for my CV from my perspective, make sure its over 75 words but not longer than 125 words, this is VERY important.`,
+        content: `I have worked two jobs. I previous worked as ${job2.jobName} for ${job2.companyName} and I now work as a ${job1.jobName} for ${job1.companyName}. Before I work these jobs I studied ${education.degree} at ${education.schoolName}, write me a personal summary for my CV from my perspective, make sure its no longer than 75 words, short and sweet. This is VERY important.`,
       },
     ],
     temperature: 0.2,

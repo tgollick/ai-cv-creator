@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 const Hero = ({ showSection, handleUserDetails }) => {
   return (
-    <div className="h-screen flex justify-center items-center relative">
+    <div className="h-screen flex justify-center items-center relative bg-[url('https://i.imgur.com/8XIdY8P.png')] bg-no-repeat bg-cover bg-center bg-fixed">
       <div className="flex flex-col gap-y-10 w-[700px]">
         <h2 className="text-6xl font-bold">
           CV Creation has never been so{" "}

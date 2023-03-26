@@ -11,9 +11,13 @@ const CVInfo = ({ userName, userRole, userPS }) => {
 
   return (
     <div className="flex flex-col gap-y-1">
-      <h2 className="text-4xl flex gap-x-2">
+      <h2 className="text-4xl flex gap-x-2 uppercase">
         {name.map((part, index) =>
-          index === 0 ? <strong>{part}</strong> : <p>{part}</p>
+          index === 0 ? (
+            <strong key={index}>{part}</strong>
+          ) : (
+            <p key={index}>{part}</p>
+          )
         )}
       </h2>
 

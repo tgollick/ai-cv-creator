@@ -27,7 +27,7 @@ const PreviousJob = ({ innerRef, showSection, setJobRole2 }) => {
 
   return (
     <div
-      className={`h-screen flex justify-center items-center relative`}
+      className={`h-screen flex justify-center items-center relative bg-[url('https://i.imgur.com/8XIdY8P.png')] bg-no-repeat bg-cover bg-center bg-fixed`}
       ref={innerRef}
     >
       <div className="flex flex-col gap-y-10 items-center w-[700px]">

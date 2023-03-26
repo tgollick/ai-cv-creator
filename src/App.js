@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import CV from "./sections/CV.jsx";
+import React, { useRef, useState } from "react";
+import CV from "./sections/CVsection.jsx";
 import EducationInput from "./sections/EducationInput.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./sections/Hero.jsx";
@@ -9,6 +9,7 @@ import PrevJobInput from "./sections/prevJobInput.jsx";
 import SkillsInput from "./sections/SkillsInput.jsx";
 import SocialMedias from "./sections/SocialMedias.jsx";
 import { personalCompletion } from "./api/personalCompletion.js";
+import GenerateCV from "./sections/GenerateCV.jsx";
 
 const App = () => {
   const [sectionvisible, setSectionVisible] = useState(0);
@@ -98,8 +99,9 @@ const App = () => {
   const ref5 = useRef();
   const ref6 = useRef();
   const ref7 = useRef();
+  const ref8 = useRef();
 
-  const refs = [ref1, ref2, ref3, ref4, ref5, ref6, ref7];
+  const refs = [ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8];
 
   const components = [
     {
@@ -169,8 +171,19 @@ const App = () => {
       index: 6,
     },
     {
-      component: <CV innerRef={ref7} userDetails={userdetails} cvData={data} />,
+      component: (
+        <GenerateCV
+          innerRef={ref7}
+          cvData={data}
+          generateCV={generateCV}
+          showSection={showSection}
+        />
+      ),
       index: 7,
+    },
+    {
+      component: <CV innerRef={ref8} userDetails={userdetails} cvData={data} />,
+      index: 8,
     },
   ];
 
@@ -180,12 +193,14 @@ const App = () => {
       <Header userDetails={userdetails} />
 
       <div>
-        {sectionvisible === 7 ? (
-          <div>{components[7].component}</div>
+        {sectionvisible === 8 ? (
+          <div>{components[sectionvisible].component}</div>
         ) : (
           components.map((item, index) => {
             return item.index <= sectionvisible ? (
-              <div key={index}>{item.component}</div>
+              <div className="text-white" key={index}>
+                {item.component}
+              </div>
             ) : null;
           })
         )}

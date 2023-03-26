@@ -20,8 +20,8 @@ const CVContact = ({ userName, userEmail, userSocials }) => {
           <div className="flex flex-col gap-y-2">
             {userSocials.map((social, socialIdx) => (
               <div key={socialIdx} className="flex gap-x-2 items-center">
-                <img src={social.socialImg} alt="Social icon" className="h-4" />
-                <p>{social.userName}</p>
+                <img src={social.img} alt="Social icon" className="h-4" />
+                <p>{social.username}</p>
               </div>
             ))}
           </div>

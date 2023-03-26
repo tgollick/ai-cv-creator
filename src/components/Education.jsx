@@ -2,7 +2,7 @@ import React from "react";
 
 const Education = ({ degreeRef, schoolRef, resultRef }) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2 text-black">
       <input
         type="text"
         placeholder="Degree/Course name..."
