@@ -1,11 +1,11 @@
-import React from "react";
-import CVImage from "./CVImage.jsx";
-import CVContact from "./CVContact.jsx";
-import CVSkills from "./CVSkills.jsx";
-import CVHobbies from "./CVHobbies.jsx";
-import CVInfo from "./CVInfo.jsx";
-import CVJobs from "./CVJobs.jsx";
-import CVEducation from "./CVEducation.jsx";
+import React, { useEffect } from "react";
+import CVImage from "../components/CVImage.jsx";
+import CVContact from "../components/CVContact.jsx";
+import CVSkills from "../components/CVSkills.jsx";
+import CVHobbies from "../components/CVHobbies.jsx";
+import CVInfo from "../components/CVInfo.jsx";
+import CVJobs from "../components/CVJobs.jsx";
+import CVEducation from "../components/CVEducation.jsx";
 import { motion } from "framer-motion";
 
 const CV = ({ innerRef, cvData }) => {
@@ -140,6 +140,7 @@ const CV = ({ innerRef, cvData }) => {
           </motion.div>
         </div>
       </motion.div>
+      ;
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import downArrow from "../assets/down.svg";
 import plusIcon from "../assets/plus.svg";
-import Social from "./Social";
+import Social from "../components/Social";
 import twitter from "../assets/twitter.svg";
 import youtube from "../assets/youtube.svg";
 import github from "../assets/github.svg";
@@ -10,7 +10,7 @@ import linkedin from "../assets/linkedin.svg";
 
 const { v4: uuidv4 } = require("uuid");
 
-const SocialMedias = ({ innerRef, showSection }) => {
+const SocialMedias = ({ innerRef, showSection, setCVSocials }) => {
   const [socials, setSocials] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -69,8 +69,14 @@ const SocialMedias = ({ innerRef, showSection }) => {
   };
 
   const nextSection = () => {
-    showSection();
+    setCVSocials(
+      socials.map(({ username, socialType }) => ({
+        username,
+        img: socialType.img,
+      }))
+    );
     setButtonDisabled(true);
+    showSection();
   };
 
   return (

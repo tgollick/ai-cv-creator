@@ -1,6 +1,6 @@
 import React from "react";
 
-const Education = () => {
+const Education = ({ degreeRef, schoolRef, resultRef }) => {
   return (
     <div className="flex flex-col gap-y-2">
       <input
@@ -8,6 +8,7 @@ const Education = () => {
         placeholder="Degree/Course name..."
         className="w-[600px] px-2 py-3 bg-slate-100 rounded-lg"
         required
+        ref={degreeRef}
       />
 
       <input
@@ -15,6 +16,7 @@ const Education = () => {
         placeholder="University/College name..."
         className="w-[600px] px-2 py-3 bg-slate-100 rounded-lg"
         required
+        ref={schoolRef}
       />
 
       <input
@@ -22,6 +24,7 @@ const Education = () => {
         placeholder="Grade acheived..."
         className="w-[600px] px-2 py-3 bg-slate-100 rounded-lg"
         required
+        ref={resultRef}
       />
     </div>
   );

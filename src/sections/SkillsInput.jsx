@@ -1,36 +1,37 @@
 import React, { useRef, useState } from "react";
-import Skill from "./Skill";
 import plusIcon from "../assets/plus.svg";
 import downArrow from "../assets/down.svg";
+import Skill from "../components/Skill";
 
 const { v4: uuidv4 } = require("uuid");
 
-const HobbiesInput = ({ showSection, innerRef }) => {
-  const [hobbies, setHobbies] = useState([]);
+const SkillsInput = ({ innerRef, showSection, setCVSkills }) => {
+  const [skills, setSkills] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const hobbieRef = useRef();
+  const skillRef = useRef();
 
-  const handleAddHobbie = () => {
-    const hobbie = {
+  const handleAddSkill = () => {
+    const skill = {
       id: uuidv4(),
-      name: hobbieRef.current.value,
+      name: skillRef.current.value,
     };
 
-    hobbieRef.current.value = "";
+    skillRef.current.value = "";
 
-    const tempList = [...hobbies, hobbie];
+    const tempList = [...skills, skill];
 
-    setHobbies(tempList);
+    setSkills(tempList);
   };
 
-  const deleteHobbie = (id) => {
-    const tempHobbies = [...hobbies];
-    setHobbies(tempHobbies.filter((hobbie) => hobbie.id !== id));
+  const deleteSkill = (id) => {
+    const tempSkills = [...skills];
+    setSkills(tempSkills.filter((skill) => skill.id !== id));
   };
 
   const nextSection = () => {
     showSection();
+    setCVSkills(skills.map((skill) => skill.name));
     setButtonDisabled(true);
   };
 
@@ -38,29 +39,29 @@ const HobbiesInput = ({ showSection, innerRef }) => {
     <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
-          <p className="font-bold text-4xl text-white">5</p>
+          <p className="font-bold text-4xl text-white">3</p>
         </div>
 
         <h3 className="text-5xl font-bold text-center">
-          Enter a list of your favorite hobbies.
+          Enter your key skills.
         </h3>
 
         <div className="flex flex-col gap-y-3">
-          {hobbies.map((hb) => (
-            <Skill key={hb.id} skill={hb} deleteSkill={deleteHobbie} />
+          {skills.map((sk) => (
+            <Skill key={sk.id} skill={sk} deleteSkill={deleteSkill} />
           ))}
         </div>
 
         <div className="flex items-center gap-x-2">
           <input
             type="text"
-            placeholder="Enter your hobbies..."
+            placeholder="Enter your key skills..."
             className="w-[400px] px-2 py-3 bg-slate-100 rounded-lg"
-            ref={hobbieRef}
+            ref={skillRef}
           />
           <button
             className="bg-blue-500 rounded-lg w-12 p-2"
-            onClick={handleAddHobbie}
+            onClick={handleAddSkill}
           >
             <img src={plusIcon} alt="Plus Icon" />
           </button>
@@ -80,4 +81,4 @@ const HobbiesInput = ({ showSection, innerRef }) => {
   );
 };
 
-export default HobbiesInput;
+export default SkillsInput;

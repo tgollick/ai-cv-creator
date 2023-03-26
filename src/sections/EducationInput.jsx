@@ -1,13 +1,31 @@
-import React, { useState } from "react";
-import Education from "./Education";
+import React, { useRef, useState } from "react";
+import Education from "../components/Education";
 import downArrow from "../assets/down.svg";
+import { educationCompletion } from "../api/educationCompletion.js";
 
-const EducationInput = ({ innerRef, showSection }) => {
+const EducationInput = ({ innerRef, showSection, setEducation }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const nextSection = () => {
+  const degreeRef = useRef();
+  const schoolRef = useRef();
+  const resultRef = useRef();
+
+  const nextSection = async () => {
     showSection();
     setButtonDisabled(true);
+
+    const description = await educationCompletion(
+      degreeRef.current.value,
+      schoolRef.current.value,
+      resultRef.current.value
+    );
+
+    setEducation({
+      degree: degreeRef.current.value,
+      schoolName: schoolRef.current.value,
+      grade: resultRef.current.value,
+      description: description,
+    });
   };
 
   return (
@@ -21,7 +39,11 @@ const EducationInput = ({ innerRef, showSection }) => {
           Enter your highest point of education.
         </h3>
 
-        <Education />
+        <Education
+          degreeRef={degreeRef}
+          schoolRef={schoolRef}
+          resultRef={resultRef}
+        />
 
         <button
           className={`${
