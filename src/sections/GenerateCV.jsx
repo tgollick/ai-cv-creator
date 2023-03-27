@@ -18,10 +18,7 @@ const GenerateCV = ({ innerRef, cvData, generateCV, showSection }) => {
   }
 
   return (
-    <div
-      ref={innerRef}
-      className="h-screen flex justify-center items-center bg-[url('https://i.imgur.com/8XIdY8P.png')] bg-no-repeat bg-cover bg-center bg-fixed"
-    >
+    <div ref={innerRef} className="h-screen flex justify-center items-center">
       {!loadingCV ? (
         <button
           onClick={showCV}

@@ -198,9 +198,7 @@ const App = () => {
         ) : (
           components.map((item, index) => {
             return item.index <= sectionvisible ? (
-              <div className="text-white" key={index}>
-                {item.component}
-              </div>
+              <div key={index}>{item.component}</div>
             ) : null;
           })
         )}

@@ -36,13 +36,10 @@ const HobbiesInput = ({ showSection, innerRef, setCVHobbies }) => {
   };
 
   return (
-    <div
-      className={`h-screen flex justify-center items-center bg-[url('https://i.imgur.com/8XIdY8P.png')] bg-no-repeat bg-cover bg-center bg-fixed`}
-      ref={innerRef}
-    >
+    <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
-          <p className="font-bold text-4xl text-white">5</p>
+          <p className="font-bold text-4xl ">5</p>
         </div>
 
         <h3 className="text-5xl font-bold text-center">
