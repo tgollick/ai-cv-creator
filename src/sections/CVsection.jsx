@@ -1,9 +1,9 @@
 import React from "react";
 import CV from "../components/CV.jsx";
 
-const CVsection = ({ innerRef, cvData }) => {
+const CVsection = ({ cvData }) => {
   return (
-    <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
+    <div className={`h-screen flex justify-center items-center`}>
       <CV cvData={cvData} />
     </div>
   );

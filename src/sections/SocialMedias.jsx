@@ -10,7 +10,7 @@ import linkedin from "../assets/linkedin.svg";
 
 const { v4: uuidv4 } = require("uuid");
 
-const SocialMedias = ({ innerRef, showSection, setCVSocials }) => {
+const SocialMedias = ({ showSection, setCVSocials }) => {
   const [socials, setSocials] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -80,7 +80,7 @@ const SocialMedias = ({ innerRef, showSection, setCVSocials }) => {
   };
 
   return (
-    <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
+    <div className={`h-screen flex justify-center items-center`}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
           <p className="font-bold text-4xl">6</p>

@@ -3,7 +3,7 @@ import Education from "../components/Education";
 import downArrow from "../assets/down.svg";
 import { educationCompletion } from "../api/educationCompletion.js";
 
-const EducationInput = ({ innerRef, showSection, setEducation }) => {
+const EducationInput = ({ showSection, setEducation }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const degreeRef = useRef();
@@ -29,7 +29,7 @@ const EducationInput = ({ innerRef, showSection, setEducation }) => {
   };
 
   return (
-    <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
+    <div className={`h-screen flex justify-center items-center`}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
           <p className="font-bold text-4xl ">4</p>

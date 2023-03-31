@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import Job from "../components/Job";
 import downArrow from "../assets/down.svg";
 import { roleCompletion } from "../api/roleCompletion.js";
+import { motion } from "framer-motion";
 
-const CurrentJob = ({ innerRef, showSection, setJobRole1 }) => {
+const CurrentJob = ({ showSection, setJobRole1 }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const jobRoleRef = useRef();
@@ -26,9 +27,18 @@ const CurrentJob = ({ innerRef, showSection, setJobRole1 }) => {
   };
 
   return (
-    <div
-      className={`h-screen flex justify-center items-center relative`}
-      ref={innerRef}
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 2,
+        delay: 2,
+      }}
+      className={`h-screen flex justify-center items-center overflow-hidden relative`}
     >
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex z-[11] justify-center items-center w-[75px] h-[75px]">
@@ -53,7 +63,7 @@ const CurrentJob = ({ innerRef, showSection, setJobRole1 }) => {
           <img src={downArrow} alt="Down Arrow" className="w-10" />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

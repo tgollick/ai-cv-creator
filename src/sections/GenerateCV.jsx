@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import loadingGIF from "../assets/loading.gif";
 import { motion } from "framer-motion";
 
-const GenerateCV = ({ innerRef, cvData, generateCV, showSection }) => {
+const GenerateCV = ({ cvData, generateCV, showSection }) => {
   const [loadingCV, setLoadingCV] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const GenerateCV = ({ innerRef, cvData, generateCV, showSection }) => {
   }
 
   return (
-    <div ref={innerRef} className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center">
       {!loadingCV ? (
         <button
           onClick={showCV}

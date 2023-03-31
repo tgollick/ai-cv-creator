@@ -3,7 +3,7 @@ import Job from "../components/Job";
 import downArrow from "../assets/down.svg";
 import { roleCompletion } from "../api/roleCompletion";
 
-const PreviousJob = ({ innerRef, showSection, setJobRole2 }) => {
+const PreviousJob = ({ showSection, setJobRole2 }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const jobRoleRef = useRef();
@@ -26,10 +26,7 @@ const PreviousJob = ({ innerRef, showSection, setJobRole2 }) => {
   };
 
   return (
-    <div
-      className={`h-screen flex justify-center items-center relative`}
-      ref={innerRef}
-    >
+    <div className={`h-screen flex justify-center items-center relative`}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex z-[11] justify-center items-center w-[75px] h-[75px]">
           <p className="font-bold text-4xl ">2</p>

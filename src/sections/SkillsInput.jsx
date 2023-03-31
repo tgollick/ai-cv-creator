@@ -5,7 +5,7 @@ import Skill from "../components/Skill";
 
 const { v4: uuidv4 } = require("uuid");
 
-const SkillsInput = ({ innerRef, showSection, setCVSkills }) => {
+const SkillsInput = ({ showSection, setCVSkills }) => {
   const [skills, setSkills] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -36,7 +36,7 @@ const SkillsInput = ({ innerRef, showSection, setCVSkills }) => {
   };
 
   return (
-    <div className={`h-screen flex justify-center items-center`} ref={innerRef}>
+    <div className={`h-screen flex justify-center items-center`}>
       <div className="flex flex-col gap-y-10 items-center w-[700px]">
         <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
           <p className="font-bold text-4xl">3</p>

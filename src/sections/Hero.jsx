@@ -1,10 +1,29 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
+import { motion } from "framer-motion";
 
 const Hero = ({ showSection, handleUserDetails }) => {
   return (
-    <div className="h-screen flex justify-center items-center relative">
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 100,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      exit={{
+        opacity: 0,
+        y: "-60vh",
+        transitionDuration: 2,
+      }}
+      transition={{
+        duration: 1.5,
+      }}
+      className="h-screen flex justify-center items-center relative"
+    >
       <div className="flex flex-col gap-y-10 w-[700px]">
         <h2 className="text-6xl font-bold">
           CV Creation has never been so{" "}
@@ -32,7 +51,7 @@ const Hero = ({ showSection, handleUserDetails }) => {
           }}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import CV from "./sections/CVsection.jsx";
 import EducationInput from "./sections/EducationInput.jsx";
 import Header from "./components/Header.jsx";
@@ -28,17 +28,9 @@ const App = () => {
   const [socials, setSocials] = useState();
 
   const showSection = () => {
-    const tempSection = sectionvisible;
+    const prevSection = sectionvisible;
 
-    setSectionVisible(tempSection + 1);
-
-    setTimeout(() => {
-      refs[sectionvisible].current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-    }, 500);
+    setSectionVisible(prevSection + 1);
   };
 
   const generateCV = async () => {
@@ -92,98 +84,53 @@ const App = () => {
     });
   };
 
-  const ref1 = useRef();
-  const ref2 = useRef();
-  const ref3 = useRef();
-  const ref4 = useRef();
-  const ref5 = useRef();
-  const ref6 = useRef();
-  const ref7 = useRef();
-  const ref8 = useRef();
-
-  const refs = [ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8];
-
   const components = [
     {
       component: (
         <Hero showSection={showSection} handleUserDetails={handleUserDetails} />
       ),
-      index: 0,
     },
     {
       component: (
-        <CurrentJobInput
-          innerRef={ref1}
-          showSection={showSection}
-          setJobRole1={setJobRole1}
-        />
+        <CurrentJobInput showSection={showSection} setJobRole1={setJobRole1} />
       ),
-      index: 1,
     },
     {
       component: (
-        <PrevJobInput
-          innerRef={ref2}
-          showSection={showSection}
-          setJobRole2={setJobRole2}
-        />
+        <PrevJobInput showSection={showSection} setJobRole2={setJobRole2} />
       ),
-      index: 2,
     },
     {
       component: (
-        <SkillsInput
-          setCVSkills={setSkills}
-          showSection={showSection}
-          innerRef={ref3}
-        />
+        <SkillsInput setCVSkills={setSkills} showSection={showSection} />
       ),
-      index: 3,
     },
     {
       component: (
-        <EducationInput
-          setEducation={setEducation}
-          showSection={showSection}
-          innerRef={ref4}
-        />
+        <EducationInput setEducation={setEducation} showSection={showSection} />
       ),
-      index: 4,
     },
     {
       component: (
-        <HobbiesInput
-          setCVHobbies={setHobbies}
-          showSection={showSection}
-          innerRef={ref5}
-        />
+        <HobbiesInput setCVHobbies={setHobbies} showSection={showSection} />
       ),
-      index: 5,
     },
     {
       component: (
-        <SocialMedias
-          setCVSocials={setSocials}
-          innerRef={ref6}
-          showSection={showSection}
-        />
+        <SocialMedias setCVSocials={setSocials} showSection={showSection} />
       ),
-      index: 6,
     },
     {
       component: (
         <GenerateCV
-          innerRef={ref7}
           cvData={data}
           generateCV={generateCV}
           showSection={showSection}
         />
       ),
-      index: 7,
     },
     {
-      component: <CV innerRef={ref8} userDetails={userdetails} cvData={data} />,
-      index: 8,
+      component: <CV userDetails={userdetails} cvData={data} />,
     },
   ];
 
@@ -192,17 +139,7 @@ const App = () => {
       {/* Header */}
       <Header userDetails={userdetails} />
 
-      <div>
-        {sectionvisible === 8 ? (
-          <div>{components[sectionvisible].component}</div>
-        ) : (
-          components.map((item, index) => {
-            return item.index <= sectionvisible ? (
-              <div key={index}>{item.component}</div>
-            ) : null;
-          })
-        )}
-      </div>
+      <div>{components[sectionvisible].component}</div>
 
       {/* Footer */}
     </div>
