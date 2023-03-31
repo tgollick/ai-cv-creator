@@ -4,14 +4,13 @@ import downArrow from "../assets/down.svg";
 import { roleCompletion } from "../api/roleCompletion.js";
 import { motion } from "framer-motion";
 
-const CurrentJob = ({ showSection, setJobRole1 }) => {
+const CurrentJob = ({ setSectionVisible, setJobRole1, jobRole1 }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const jobRoleRef = useRef();
   const companyNameRef = useRef();
 
   const nextSection = async () => {
-    showSection();
     setButtonDisabled(true);
 
     const jobDescription = await roleCompletion(

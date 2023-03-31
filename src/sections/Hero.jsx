@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { motion } from "framer-motion";
 
-const Hero = ({ showSection, handleUserDetails }) => {
+const Hero = ({ setSectionVisible, setUserDetails, userdetails }) => {
+  useEffect(() => {
+    setSectionVisible(1);
+  }, [userdetails]);
+
   return (
     <motion.div
       initial={{
@@ -43,8 +47,11 @@ const Hero = ({ showSection, handleUserDetails }) => {
             const fullName = decodedData.name;
             const image = decodedData.picture;
             const email = decodedData.email;
-            handleUserDetails(fullName, image, email);
-            showSection();
+            setUserDetails({
+              name: fullName,
+              img: image,
+              email: email,
+            });
           }}
           onError={() => {
             console.log("Login Failed");

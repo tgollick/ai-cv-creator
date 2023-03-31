@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CV from "./sections/CVsection.jsx";
 import EducationInput from "./sections/EducationInput.jsx";
 import Header from "./components/Header.jsx";
@@ -27,11 +27,9 @@ const App = () => {
 
   const [socials, setSocials] = useState();
 
-  const showSection = () => {
-    const prevSection = sectionvisible;
-
-    setSectionVisible(prevSection + 1);
-  };
+  useEffect(() => {
+    setSectionVisible(0);
+  }, []);
 
   const generateCV = async () => {
     const personalSummary = await personalCompletion(
@@ -76,58 +74,42 @@ const App = () => {
     });
   };
 
-  const handleUserDetails = (name, img, email) => {
-    setUserDetails({
-      name: name,
-      img: img,
-      email: email,
-    });
-  };
-
   const components = [
     {
       component: (
-        <Hero showSection={showSection} handleUserDetails={handleUserDetails} />
-      ),
-    },
-    {
-      component: (
-        <CurrentJobInput showSection={showSection} setJobRole1={setJobRole1} />
-      ),
-    },
-    {
-      component: (
-        <PrevJobInput showSection={showSection} setJobRole2={setJobRole2} />
-      ),
-    },
-    {
-      component: (
-        <SkillsInput setCVSkills={setSkills} showSection={showSection} />
-      ),
-    },
-    {
-      component: (
-        <EducationInput setEducation={setEducation} showSection={showSection} />
-      ),
-    },
-    {
-      component: (
-        <HobbiesInput setCVHobbies={setHobbies} showSection={showSection} />
-      ),
-    },
-    {
-      component: (
-        <SocialMedias setCVSocials={setSocials} showSection={showSection} />
-      ),
-    },
-    {
-      component: (
-        <GenerateCV
-          cvData={data}
-          generateCV={generateCV}
-          showSection={showSection}
+        <Hero
+          setSectionVisible={setSectionVisible}
+          setUserDetails={setUserDetails}
+          userdetails={userdetails}
         />
       ),
+    },
+    {
+      component: (
+        <CurrentJobInput
+          setJobRole1={setJobRole1}
+          setSectionVisible={setSectionVisible}
+          jobRole1={jobRole1}
+        />
+      ),
+    },
+    {
+      component: <PrevJobInput setJobRole2={setJobRole2} />,
+    },
+    {
+      component: <SkillsInput setCVSkills={setSkills} />,
+    },
+    {
+      component: <EducationInput setEducation={setEducation} />,
+    },
+    {
+      component: <HobbiesInput setCVHobbies={setHobbies} />,
+    },
+    {
+      component: <SocialMedias setCVSocials={setSocials} />,
+    },
+    {
+      component: <GenerateCV cvData={data} generateCV={generateCV} />,
     },
     {
       component: <CV userDetails={userdetails} cvData={data} />,
