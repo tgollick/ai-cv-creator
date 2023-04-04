@@ -2,7 +2,7 @@ async function educationCompletion(degree, school, result) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
 

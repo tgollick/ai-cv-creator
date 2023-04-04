@@ -9,12 +9,11 @@ import PrevJobInput from "./sections/prevJobInput.jsx";
 import SkillsInput from "./sections/SkillsInput.jsx";
 import SocialMedias from "./sections/SocialMedias.jsx";
 import { personalCompletion } from "./api/personalCompletion.js";
-import GenerateCV from "./sections/GenerateCV.jsx";
 
 const App = () => {
   const [sectionvisible, setSectionVisible] = useState(0);
   const [userdetails, setUserDetails] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
 
   const [jobRole1, setJobRole1] = useState();
   const [jobRole2, setJobRole2] = useState();
@@ -94,22 +93,51 @@ const App = () => {
       ),
     },
     {
-      component: <PrevJobInput setJobRole2={setJobRole2} />,
+      component: (
+        <PrevJobInput
+          setJobRole2={setJobRole2}
+          setSectionVisible={setSectionVisible}
+          jobRole2={jobRole2}
+        />
+      ),
     },
     {
-      component: <SkillsInput setCVSkills={setSkills} />,
+      component: (
+        <SkillsInput
+          setCVSkills={setSkills}
+          CVSkills={skills}
+          setSectionVisible={setSectionVisible}
+        />
+      ),
     },
     {
-      component: <EducationInput setEducation={setEducation} />,
+      component: (
+        <EducationInput
+          setEducation={setEducation}
+          education={education}
+          setSectionVisible={setSectionVisible}
+        />
+      ),
     },
     {
-      component: <HobbiesInput setCVHobbies={setHobbies} />,
+      component: (
+        <HobbiesInput
+          setCVHobbies={setHobbies}
+          CVHobbies={hobbies}
+          setSectionVisible={setSectionVisible}
+        />
+      ),
     },
     {
-      component: <SocialMedias setCVSocials={setSocials} />,
-    },
-    {
-      component: <GenerateCV cvData={data} generateCV={generateCV} />,
+      component: (
+        <SocialMedias
+          setCVSocials={setSocials}
+          CVSocials={socials}
+          setSectionVisible={setSectionVisible}
+          generateCV={generateCV}
+          data={data}
+        />
+      ),
     },
     {
       component: <CV userDetails={userdetails} cvData={data} />,
@@ -117,15 +145,11 @@ const App = () => {
   ];
 
   return (
-    <div>
+    <div className="h-screen overflow-hidden">
       {/* Header */}
       <Header userDetails={userdetails} />
 
-      <div>
-        {components.map((component, index) =>
-          index <= sectionvisible ? component.component : null
-        )}
-      </div>
+      <div>{components[sectionvisible].component}</div>
 
       {/* Footer */}
     </div>
