@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Job from "../components/Job";
 import downArrow from "../assets/down.svg";
-import { roleCompletion } from "../api/roleCompletion";
+import roleCompletion from "../api/roleCompletion";
 import { motion, AnimatePresence } from "framer-motion";
 import loadingGIF from "../assets/loading.gif";
 

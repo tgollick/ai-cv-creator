@@ -1,4 +1,4 @@
-async function personalCompletion(job1, job2, education) {
+export default async function personalCompletion(job1, job2, education) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
@@ -23,5 +23,3 @@ async function personalCompletion(job1, job2, education) {
 
   return completion.data.choices[0].message.content;
 }
-
-module.exports = { personalCompletion };

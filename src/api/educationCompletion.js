@@ -1,4 +1,4 @@
-async function educationCompletion(degree, school, result) {
+export default async function educationCompletion(degree, school, result) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
@@ -23,5 +23,3 @@ async function educationCompletion(degree, school, result) {
 
   return completion.data.choices[0].message.content;
 }
-
-module.exports = { educationCompletion };

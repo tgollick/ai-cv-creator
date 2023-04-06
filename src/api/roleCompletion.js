@@ -1,4 +1,4 @@
-async function roleCompletion(jobRole, companyName) {
+export default async function roleCompletion(jobRole, companyName) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
@@ -23,5 +23,3 @@ async function roleCompletion(jobRole, companyName) {
 
   return completion.data.choices[0].message.content;
 }
-
-module.exports = { roleCompletion };
