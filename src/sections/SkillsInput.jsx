@@ -53,48 +53,46 @@ const SkillsInput = ({ setSectionVisible, setCVSkills, CVSkills }) => {
   };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 200,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: -200,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={`h-screen flex justify-center items-center ${
-            visible ? "" : "hidden"
-          }`}
-        >
-          <div className="flex flex-col gap-y-10 items-center w-[700px]">
-            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
-              <p className="font-bold text-4xl">3</p>
+    <div className={`h-screen flex justify-center items-center`}>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 200,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -200,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="flex flex-col gap-y-10 items-center w-full p-4 md:p-0 md:w-[700px]"
+          >
+            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[50px] h-[50px] md:w-[75px] md:h-[75px]">
+              <p className="font-bold text-3xl md:text-4xl">3</p>
             </div>
 
-            <h3 className="text-5xl font-bold text-center">
+            <h3 className="text-4xl md:text-5xl font-bold text-center">
               Enter your key skills.
             </h3>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 w-full">
               {skills.map((sk) => (
                 <Skill key={sk.id} skill={sk} deleteSkill={deleteSkill} />
               ))}
             </div>
 
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center gap-x-2 w-full">
               <input
                 type="text"
                 placeholder="Enter your key skills..."
-                className="w-[400px] px-2 py-3 bg-slate-100 rounded-lg"
+                className="w-full px-2 py-3 bg-slate-100 rounded-lg"
                 ref={skillRef}
               />
               <button
@@ -114,10 +112,10 @@ const SkillsInput = ({ setSectionVisible, setCVSkills, CVSkills }) => {
             >
               <img src={downArrow} alt="Down Arrow" className="w-10" />
             </button>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

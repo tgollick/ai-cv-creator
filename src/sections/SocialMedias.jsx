@@ -8,6 +8,7 @@ import github from "../assets/github.svg";
 import instagram from "../assets/instagram.svg";
 import linkedin from "../assets/linkedin.svg";
 import { motion, AnimatePresence } from "framer-motion";
+import loadingGIF from "../assets/loading.gif";
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -21,6 +22,7 @@ const SocialMedias = ({
   const [socials, setSocials] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const socialMedias = [
     {
@@ -106,69 +108,73 @@ const SocialMedias = ({
       }))
     );
     setButtonDisabled(true);
+    setLoading(true);
   };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 200,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: -200,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={`h-screen flex justify-center items-center ${
-            visible ? "" : "hidden"
-          }`}
-        >
-          <div className="flex flex-col gap-y-10 items-center w-[700px]">
-            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
-              <p className="font-bold text-4xl">6</p>
+    <div className={`h-screen flex justify-center items-center`}>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 200,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -200,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="flex flex-col gap-y-10 items-center w-full p-4 md:p-0 md:w-[700px]"
+          >
+            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[50px] h-[50px] md:w-[75px] md:h-[75px]">
+              <p className="font-bold text-3xl md:text-4xl">6</p>
             </div>
 
-            <h3 className="text-5xl font-bold text-center">
+            <h3 className="text-4xl md:text-5xl font-bold text-center">
               Enter your social medias.
             </h3>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 w-full">
               {socials.map((sm) => (
                 <Social key={sm.id} social={sm} deleteSocial={deleteSocial} />
               ))}
             </div>
 
-            <div className="flex items-center gap-x-2">
-              <input
-                type="text"
-                placeholder="Enter your social media username..."
-                className="w-[350px] px-2 py-3 bg-slate-100 rounded-lg"
-                ref={socialRef}
-              />
-              <select
-                className="w-[125px] px-2 py-3 bg-slate-100 rounded-lg"
-                ref={socialTypeRef}
-              >
-                {socialMedias.map((social, index) => (
-                  <option key={index} value={social.id}>
-                    {social.name}
-                  </option>
-                ))}
-              </select>
-              <button
-                className="bg-blue-500 rounded-lg w-12 p-2"
-                onClick={handleAddSocial}
-              >
-                <img src={plusIcon} alt="Plus Icon" />
-              </button>
+            <div className="w-full flex flex-col md:flex-row gap-2 justify-center items-center">
+              <div className="flex items-center gap-x-2 w-full md:w-fit">
+                <input
+                  type="text"
+                  placeholder="Enter your social media username..."
+                  className="w-[350px] px-2 py-3 bg-slate-100 rounded-lg"
+                  ref={socialRef}
+                />
+                <select
+                  className="w-[125px] px-2 py-3 bg-slate-100 rounded-lg"
+                  ref={socialTypeRef}
+                >
+                  {socialMedias.map((social, index) => (
+                    <option key={index} value={social.id}>
+                      {social.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <button
+                  className="bg-blue-500 rounded-lg w-8 md:w-12 p-2"
+                  onClick={handleAddSocial}
+                >
+                  <img src={plusIcon} alt="Plus Icon" />
+                </button>
+              </div>
             </div>
 
             <button
@@ -178,12 +184,16 @@ const SocialMedias = ({
               } rounded-full transition-colors duration-500`}
               disabled={buttonDisabled}
             >
-              <img src={downArrow} alt="Down Arrow" className="w-10" />
+              <img
+                src={loading ? loadingGIF : downArrow}
+                alt="Down Arrow"
+                className="w-10"
+              />
             </button>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

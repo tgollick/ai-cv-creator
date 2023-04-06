@@ -47,22 +47,22 @@ const App = () => {
         {
           jobRole: jobRole1.jobRole,
           companyName: jobRole1.companyName,
-          dateStart: "03/07/2022",
-          dateEnd: "Current",
+          dateStart: jobRole1.startDate,
+          dateEnd: jobRole1.endDate,
           jobDescription: jobRole1.jobDescription,
         },
         {
           jobRole: jobRole2.jobRole,
           companyName: jobRole2.companyName,
-          dateStart: "21/01/2022",
-          dateEnd: "30/06/2022",
+          dateStart: jobRole2.startDate,
+          dateEnd: jobRole2.endDate,
           jobDescription: jobRole2.jobDescription,
         },
       ],
       education: {
         educationDegree: education.degree,
-        educationStart: "2017",
-        educationEnd: "2020",
+        educationStart: education.startDate,
+        educationEnd: education.endDate,
         educationSchoolName: education.schoolName,
         educationGrade: education.grade,
         educationDescription: education.description,
@@ -145,7 +145,7 @@ const App = () => {
   ];
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen">
       {/* Header */}
       <Header userDetails={userdetails} />
 

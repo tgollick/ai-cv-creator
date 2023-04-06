@@ -8,7 +8,7 @@ const Skill = ({ skill, deleteSkill }) => {
 
   return (
     <div className="flex justify-center gap-x-3 text-black">
-      <p className="text-xl w-[400px]">{skill.name}</p>
+      <p className="text-md md:text-xl w-[400px]">{skill.name}</p>
       <button onClick={handleDelete}>
         <img
           src={deleteIcon}

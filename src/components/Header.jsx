@@ -12,13 +12,15 @@ const Header = ({ userDetails }) => {
       </div>
 
       {/* Slogan as no nav needed */}
-      <div className={`${userDetails === "" ? "" : "hidden"}`}>
-        <p className="italic opacity-50">Powered by Chat GPT 4 AI model...</p>
+      <div className={`${userDetails === "" ? "hidden md:block" : "hidden"}`}>
+        <p className="text-center italic opacity-50">
+          Powered by Chat GPT 4 AI model...
+        </p>
       </div>
 
       <div
-        className={`flex justify-center gap-x-3 items-center ${
-          userDetails === "" ? "hidden" : ""
+        className={`justify-center gap-x-3 items-center ${
+          userDetails === "" ? "hidden" : "hidden md:flex"
         }`}
       >
         <img
@@ -32,17 +34,21 @@ const Header = ({ userDetails }) => {
       </div>
 
       {/* Social media for me */}
-      <div className="w-[400px] flex justify-end">
-        <SocialIcon
-          url="https://twitter.com/chatgpt4"
-          bgColor="transparent"
-          fgColor="white"
-        />
-        <SocialIcon
-          url="https://www.linkedin.com/company/chat-gpt-4"
-          bgColor="transparent"
-          fgColor="white"
-        />
+      <div className="w-fit md:w-[400px] flex justify-end">
+        <div className="hidden md:block">
+          <SocialIcon
+            url="https://twitter.com/chatgpt4"
+            bgColor="transparent"
+            fgColor="white"
+          />
+        </div>
+        <div className="hidden md:block">
+          <SocialIcon
+            url="https://www.linkedin.com/company/chat-gpt-4"
+            bgColor="transparent"
+            fgColor="white"
+          />
+        </div>
         <SocialIcon
           url="https://github.com/chatgpt4"
           bgColor="transparent"

@@ -53,44 +53,42 @@ const HobbiesInput = ({ setCVHobbies, CVHobbies, setSectionVisible }) => {
   };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 200,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: -200,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={`h-screen flex justify-center items-center ${
-            visible ? "" : "hidden"
-          }`}
-        >
-          <div className="flex flex-col gap-y-10 items-center w-[700px]">
-            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[75px] h-[75px]">
-              <p className="font-bold text-4xl ">5</p>
+    <div className={`h-screen flex justify-center items-center`}>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 200,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -200,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="flex flex-col gap-y-10 items-center w-full p-4 md:p-0 md:w-[700px]"
+          >
+            <div className="bg-blue-500 rounded-full flex justify-center items-center w-[50px] h-[50px] md:w-[75px] md:h-[75px]">
+              <p className="font-bold text-3xl md:text-4xl">5</p>
             </div>
 
-            <h3 className="text-5xl font-bold text-center">
+            <h3 className="text-4xl md:text-5xl font-bold text-center">
               Enter a list of your favorite hobbies.
             </h3>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 w-full">
               {hobbies.map((hb) => (
                 <Skill key={hb.id} skill={hb} deleteSkill={deleteHobbie} />
               ))}
             </div>
 
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center justify-center gap-x-2 w-full">
               <input
                 type="text"
                 placeholder="Enter your hobbies..."
@@ -114,10 +112,10 @@ const HobbiesInput = ({ setCVHobbies, CVHobbies, setSectionVisible }) => {
             >
               <img src={downArrow} alt="Down Arrow" className="w-10" />
             </button>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

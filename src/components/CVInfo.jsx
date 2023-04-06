@@ -10,8 +10,8 @@ const CVInfo = ({ userName, userRole, userPS }) => {
   }, [userName]);
 
   return (
-    <div className="flex flex-col gap-y-1">
-      <h2 className="text-4xl flex gap-x-2 uppercase">
+    <div className="flex flex-col gap-y-0.5 md:gap-y-1">
+      <h2 className="text-xl md:text-4xl flex gap-x-2 uppercase">
         {name.map((part, index) =>
           index === 0 ? (
             <strong key={index}>{part}</strong>
@@ -21,9 +21,13 @@ const CVInfo = ({ userName, userRole, userPS }) => {
         )}
       </h2>
 
-      <p className="tracking-[4px]">{userRole}</p>
+      <p className="tracking-[4px] text-[8px] mt-[-2px] md:mt-0 md:text-base">
+        {userRole}
+      </p>
 
-      <p className="text-xs">{userPS}</p>
+      <p className="text-[5.5px] min-[410px]:text-[6.5px] md:text-xs">
+        {userPS}
+      </p>
     </div>
   );
 };

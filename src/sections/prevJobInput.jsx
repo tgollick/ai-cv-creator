@@ -3,6 +3,7 @@ import Job from "../components/Job";
 import downArrow from "../assets/down.svg";
 import { roleCompletion } from "../api/roleCompletion";
 import { motion, AnimatePresence } from "framer-motion";
+import loadingGIF from "../assets/loading.gif";
 
 const PreviousJob = ({
   showSection,
@@ -12,9 +13,12 @@ const PreviousJob = ({
 }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const jobRoleRef = useRef();
   const companyNameRef = useRef();
+  const startRef = useRef();
+  const endRef = useRef();
 
   useEffect(() => {
     setSectionVisible(2);
@@ -34,7 +38,7 @@ const PreviousJob = ({
 
   const nextSection = async () => {
     setButtonDisabled(true);
-
+    setLoading(true);
     const jobDescription = await roleCompletion(
       jobRoleRef.current.value,
       companyNameRef.current.value
@@ -44,43 +48,48 @@ const PreviousJob = ({
       jobRole: jobRoleRef.current.value,
       companyName: companyNameRef.current.value,
       jobDescription: jobDescription,
+      startDate: startRef.current.value,
+      endDate: endRef.current.value,
     });
   };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 200,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: -200,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={`h-screen flex justify-center items-center relative ${
-            visible ? "" : "hidden"
-          }`}
-        >
-          <div className="flex flex-col gap-y-10 items-center w-[700px]">
-            <div className="bg-blue-500 rounded-full flex z-[11] justify-center items-center w-[75px] h-[75px]">
-              <p className="font-bold text-4xl ">2</p>
+    <div className={`h-screen flex justify-center items-center relative`}>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 200,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -200,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="flex flex-col gap-y-10 items-center w-full p-4 md:p-0 md:w-[700px]"
+          >
+            <div className="bg-blue-500 rounded-full flex z-[11] justify-center items-center w-[50px] h-[50px] md:w-[75px] md:h-[75px]">
+              <p className="font-bold text-3xl md:text-4xl ">2</p>
             </div>
 
-            <h3 className="text-5xl font-bold text-center">
+            <h3 className="text-4xl md:text-5xl font-bold text-center">
               Enter your previous job role and company.
             </h3>
 
-            <div>
-              <Job jobRoleRef={jobRoleRef} companyNameRef={companyNameRef} />
+            <div className="w-full">
+              <Job
+                jobRoleRef={jobRoleRef}
+                companyNameRef={companyNameRef}
+                startRef={startRef}
+                endRef={endRef}
+              />
             </div>
 
             <button
@@ -90,12 +99,16 @@ const PreviousJob = ({
               onClick={nextSection}
               disabled={buttonDisabled}
             >
-              <img src={downArrow} alt="Down Arrow" className="w-10" />
+              <img
+                src={loading ? loadingGIF : downArrow}
+                alt="Down Arrow"
+                className="w-10"
+              />
             </button>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

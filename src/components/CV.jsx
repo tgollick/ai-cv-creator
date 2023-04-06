@@ -8,7 +8,7 @@ import CVInfo from "../components/CVInfo.jsx";
 import CVJobs from "../components/CVJobs.jsx";
 import CVEducation from "../components/CVEducation.jsx";
 
-const CV = ({ cvData }) => {
+const CV = ({ cvData, green, purple, blue }) => {
   return (
     <motion.div
       initial={{
@@ -23,9 +23,13 @@ const CV = ({ cvData }) => {
         duration: 2,
         delay: 1,
       }}
-      className="flex w-[700px] aspect-[1/1.4] shadow-2xl"
+      className="flex w-full md:w-[700px] aspect-[1/1.4] shadow-2xl"
     >
-      <div className="w-[200px] h-full bg-gray-800 flex flex-col text-white pb-10">
+      <div
+        className={`w-[30%] md:w-[200px] h-full flex flex-col text-white pb-10 ${
+          green ? "bg-[#013220]" : ""
+        } ${blue ? "bg-slate-800" : ""} ${purple ? "bg-[#301934]" : ""}`}
+      >
         <motion.div
           initial={{
             opacity: 0,
@@ -90,7 +94,13 @@ const CV = ({ cvData }) => {
           </motion.div>
         </div>
       </div>
-      <div className="w-[500px] text-gray-800 bg-white px-6 py-10 flex flex-col justify-between h-full">
+      <div
+        className={`w-[70%] md:w-[500px] ${green ? "text-[#013220]" : ""} ${
+          blue ? "text-slate-800" : ""
+        } ${
+          purple ? "text-[#301934]" : ""
+        } bg-white px-3 md:px-6 py-4 md:py-10 flex flex-col justify-between h-full`}
+      >
         <motion.div
           initial={{
             opacity: 0,
