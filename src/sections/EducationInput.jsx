@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Education from "../components/Education";
 import downArrow from "../assets/down.svg";
-import { educationCompletion } from "../api/educationCompletion.js";
+import educationCompletion from "../api/educationCompletion.js";
 import { motion, AnimatePresence } from "framer-motion";
 import loadingGIF from "../assets/loading.gif";
 

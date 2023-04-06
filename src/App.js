@@ -8,7 +8,7 @@ import CurrentJobInput from "./sections/currentJobInput.jsx";
 import PrevJobInput from "./sections/prevJobInput.jsx";
 import SkillsInput from "./sections/SkillsInput.jsx";
 import SocialMedias from "./sections/SocialMedias.jsx";
-import { personalCompletion } from "./api/personalCompletion.js";
+import personalCompletion from "./api/personalCompletion.js";
 
 const App = () => {
   const [sectionvisible, setSectionVisible] = useState(0);
