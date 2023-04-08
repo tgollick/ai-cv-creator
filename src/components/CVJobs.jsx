@@ -19,7 +19,7 @@ const CVJobs = ({ jobs }) => {
             {job.companyName}
           </p>
 
-          <p className="text-[5px] min-[380px]:text-[5.5xp] min-[410px]:text-[6px] md:text-xs">
+          <p className="text-[5px] min-[380px]:text-[5.5xp] min-[410px]:text-[6px] md:text-[10px]">
             {job.jobDescription}
           </p>
         </div>

@@ -25,7 +25,7 @@ const CVInfo = ({ userName, userRole, userPS }) => {
         {userRole}
       </p>
 
-      <p className="text-[5.5px] min-[410px]:text-[6.5px] md:text-xs">
+      <p className="text-[5.5px] min-[410px]:text-[6.5px] md:text-[10px]">
         {userPS}
       </p>
     </div>

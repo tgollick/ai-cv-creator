@@ -149,7 +149,9 @@ const App = () => {
       {/* Header */}
       <Header userDetails={userdetails} />
 
-      <div>{components[sectionvisible].component}</div>
+      <div>
+        {components[sectionvisible].component}
+      </div>
 
       {/* Footer */}
     </div>
