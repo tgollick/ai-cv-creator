@@ -2,7 +2,7 @@ export default async function educationCompletion(degree, school, result) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.REACT_APP_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 

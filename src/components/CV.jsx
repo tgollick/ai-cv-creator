@@ -26,7 +26,7 @@ const CV = ({ cvData, green, purple, blue }) => {
       className="flex w-full md:w-[700px] aspect-[1/1.4] shadow-2xl"
     >
       <div
-        className={`w-[30%] md:w-[200px] h-full flex flex-col text-white pb-10 ${
+        className={`w-[30%] md:w-[200px] h-full flex flex-col text-white pb-10 transition-all duration-1000 ${
           green ? "bg-[#013220]" : ""
         } ${blue ? "bg-slate-800" : ""} ${purple ? "bg-[#301934]" : ""}`}
       >

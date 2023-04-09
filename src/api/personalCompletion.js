@@ -2,7 +2,7 @@ export default async function personalCompletion(job1, job2, education) {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.REACT_APP_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 
@@ -15,7 +15,7 @@ export default async function personalCompletion(job1, job2, education) {
       },
       {
         role: "user",
-        content: `I have worked two jobs. I previous worked as ${job2.jobName} for ${job2.companyName} and I now work as a ${job1.jobName} for ${job1.companyName}. Before I work these jobs I studied ${education.degree} at ${education.schoolName}, write me a personal summary for my CV from my perspective, make sure its no longer than 75 words, short and sweet. This is VERY important.`,
+        content: `I have worked two jobs. I previous worked as ${job2.jobRole} for ${job2.companyName} and I now work as a ${job1.jobRole} for ${job1.companyName}. Before I work these jobs I studied ${education.degree} at ${education.schoolName}, write me a personal summary for my CV from my perspective, make sure its no longer than 75 words, short and sweet. This is VERY important.`,
       },
     ],
     temperature: 0.2,

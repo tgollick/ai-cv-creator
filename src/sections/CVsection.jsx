@@ -27,7 +27,7 @@ const CVsection = ({ cvData }) => {
 
   return (
     <div
-      className={`h-screen flex justify-center items-center w-full relative py-24 px-4 box-border`}
+      className={`h-fit flex justify-center items-center w-full relative py-24 px-4 box-border`}
     >
       <CV cvData={cvData} green={green} blue={blue} purple={purple} />
 
