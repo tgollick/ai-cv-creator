@@ -14,7 +14,7 @@ const Header = ({ userDetails }) => {
       {/* Slogan as no nav needed */}
       <div className={`${userDetails === "" ? "hidden md:block" : "hidden"}`}>
         <p className="text-center italic opacity-50">
-          Powered by Chat GPT 4 AI model...
+          Powered by Open AI whisper model...
         </p>
       </div>
 
