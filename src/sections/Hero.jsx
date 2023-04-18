@@ -22,7 +22,9 @@ const Hero = ({ setSectionVisible, setUserDetails, userdetails }) => {
   }, [userdetails]);
 
   return (
-    <div className={`h-screen flex justify-center items-center relative`}>
+    <div
+      className={`h-screen flex justify-center items-center relative py-28 px-4 box-border`}
+    >
       <AnimatePresence>
         {visible && (
           <motion.div
@@ -30,7 +32,7 @@ const Hero = ({ setSectionVisible, setUserDetails, userdetails }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -200 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-y-10 w-full p-4 md:w-[700px] md:p-0"
+            className="flex flex-col gap-y-10 w-full md:w-[700px]"
           >
             <h2 className="text-5xl text-center md:text-left lg:text-6xl font-bold">
               CV Creation has never been so{" "}

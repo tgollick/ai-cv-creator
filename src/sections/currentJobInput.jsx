@@ -49,7 +49,9 @@ const CurrentJob = ({ setSectionVisible, setJobRole1, jobRole1 }) => {
   };
 
   return (
-    <div className={`h-screen flex justify-center items-center relative`}>
+    <div
+      className={`h-screen flex justify-center items-center relative py-24 px-4 box-border`}
+    >
       <AnimatePresence>
         {visible && (
           <motion.div
@@ -59,7 +61,7 @@ const CurrentJob = ({ setSectionVisible, setJobRole1, jobRole1 }) => {
             transition={{
               duration: 0.5,
             }}
-            className="flex flex-col gap-y-10 items-center w-full p-4 md:p-0 md:w-[700px]"
+            className="flex flex-col gap-y-10 items-center w-full md:w-[700px]"
           >
             <div className="bg-blue-500 rounded-full flex z-[11] justify-center items-center w-[50px] h-[50px] md:w-[75px] md:h-[75px]">
               <p className="font-bold text-3xl md:text-4xl ">1</p>

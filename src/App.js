@@ -149,9 +149,8 @@ const App = () => {
       {/* Header */}
       <Header userDetails={userdetails} />
 
+      {/* Rending each input component one by one */}
       <div>{components[sectionvisible].component}</div>
-
-      {/* Footer */}
     </div>
   );
 };
