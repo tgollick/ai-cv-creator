@@ -14,7 +14,7 @@ const Header = ({ userDetails }) => {
       {/* Slogan as no nav needed */}
       <div className={`${userDetails === "" ? "hidden md:block" : "hidden"}`}>
         <p className="text-center italic opacity-50">
-          Powered by Open AI whisper model...
+          Powered by Open AI GPT 3.5 Model...
         </p>
       </div>
 
@@ -37,20 +37,13 @@ const Header = ({ userDetails }) => {
       <div className="w-fit md:w-[400px] flex justify-end">
         <div className="hidden md:block">
           <SocialIcon
-            url="https://twitter.com/chatgpt4"
-            bgColor="transparent"
-            fgColor="white"
-          />
-        </div>
-        <div className="hidden md:block">
-          <SocialIcon
-            url="https://www.linkedin.com/company/chat-gpt-4"
+            url="https://www.linkedin.com/in/thomasgollick/"
             bgColor="transparent"
             fgColor="white"
           />
         </div>
         <SocialIcon
-          url="https://github.com/chatgpt4"
+          url="https://github.com/tgollick"
           bgColor="transparent"
           fgColor="white"
         />
