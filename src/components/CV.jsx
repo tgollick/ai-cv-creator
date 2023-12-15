@@ -28,7 +28,7 @@ const CV = ({ cvData, green, purple, blue }) => {
       <div
         className={`w-[30%] md:w-[200px] h-full flex flex-col text-white pb-10 transition-all duration-1000 ${
           green ? "bg-[#013220]" : ""
-        } ${blue ? "bg-slate-800" : ""} ${purple ? "bg-[#301934]" : ""}`}
+        } ${blue ? "bg-slate-800" : ""} ${purple ? "bg-[#2f1933]" : ""}`}
       >
         <motion.div
           initial={{
